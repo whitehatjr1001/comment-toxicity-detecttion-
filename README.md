@@ -1,5 +1,5 @@
 # comment-toxicity-detecttion-
-Comment Toxicity is a project that uses deep learning to predict the toxicity of comments. The project is built using TensorFlow, NumPy, and Pandas frameworks. The deep neural network model uses an embedding layer as its input layer and TextVectorization to preprocess the input data.
+## Comment Toxicity is a project that uses deep learning to predict the toxicity of comments. The project is built using TensorFlow, NumPy, and Pandas frameworks. The deep neural network model uses an embedding layer as its input layer and TextVectorization to preprocess the input data.
 
 The aim of the project is to predict the toxicity of comments in order to improve online conversations and make them more respectful and constructive. The model takes in comments as input and outputs a toxicity score, which is a value between 0 and 1 that indicates the degree of toxicity of the comment.
 
