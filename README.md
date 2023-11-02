@@ -8,4 +8,4 @@ To achieve this, the project uses a deep neural network model that is trained on
 The model is trained using a cross-entropy loss function and an Adam optimizer, which minimizes the loss function during training. The trained model is evaluated on a test set to measure its performance in terms of accuracy, precision, recall, and F1 score.
                                                    
 The Comment Toxicity project can be used to analyze comments on various platforms and provide feedback to users on the toxicity of their comments. This can be used by moderators to improve the quality of online conversations and create a more respectful and positive online community.
-  
+ And the model is  deployed using Hugginng face spaces and gradio link https://huggingface.co/spaces/RohithMidigudla/Comment_Toxicity_Detection
