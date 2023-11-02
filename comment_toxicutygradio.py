@@ -13,15 +13,16 @@ Original file is located at
 
 import pandas as pd
 import numpy as np
+import gradio as gr 
+
+import tensorflow as tf
+from tensorflow.keras.layers import TextVectorization
 
 df = pd.read_csv('/content/CommentToxicity/jigsaw-toxic-comment-classification-challenge/train.csv/train.csv')
 df.shape
 
 X = df['comment_text']
 y = df[df.columns[2:]].values
-
-import tensorflow as tf
-from tensorflow.keras.layers import TextVectorization
 
 max_features = 2000000
 
@@ -33,7 +34,7 @@ model_path = '/content/commenttoxicity (1).h5'
 
 model = tf.keras.models.load_model(model_path)
 
-input_str = vecterizor('Fuck U bitch ')
+input_str = vecterizor('your so horrible ')
 res = model.predict(np.expand_dims(input_str,0))
 res
 
@@ -49,29 +50,8 @@ def score_comment(comment):
 
     return text
 
-import gradio as gr
-
 interface = gr.Interface(fn=score_comment,
                          inputs=gr.Textbox(lines=2, placeholder='Comment to score'),
                         outputs='text')
 
 interface.launch(share=True)
-
-import gradio as gr
-
-
-def predict_toxicity(text):
-    # Preprocess the input text if necessary
-    # Use your model for inference
-    vector = vecterizor([text])
-    predictions = model.predict(vector)
-    labels = ['toxic', 'severe_toxic', 'obscene', 'threat', 'insult', 'identity_hate']
-    return {label: prob for label, prob in zip(labels, predictions)}
-
-iface = gr.Interface(
-    fn=predict_toxicity,
-    inputs=gr.Textbox(lines=5, label="Enter your comment here"),
-    outputs=gr.outputs.Label(num_top_classes=2),
-)
-
-iface.launch()
